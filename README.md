@@ -8,7 +8,7 @@
 ## cfg
 - `sourcemod/configs/databases.cfg` - update info here.
 - `sourcemod/data/sqlite/skybox.sq3` - just upload this default db from this repo. haven't tested if it generates successfully yet on its own.
-- `sourcemod/configs/skybox.ini` - add custom skyboxes here and they will automatically load in the list.
+- `sourcemod/configs/skybox.ini` - add custom skyboxes here and they will automatically load in the list (credits deathknife)
 - make sure your skyboxes exist in `cstrike/materials/skybox`.
 - default setup includes some custom skyboxes
 
