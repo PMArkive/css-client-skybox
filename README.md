@@ -22,5 +22,6 @@
 
 ## todo
 - more extensive testing for database operations
-- more extensive testing for client index handling 
+- more extensive testing for client index handling (broken)
 - edge case testing
+- map change handling
