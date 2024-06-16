@@ -139,7 +139,7 @@ public void OnClientDisconnect(int client)
     if (IsValidClient(client))
     {
         g_bClientSkyboxApplied[client] = false;
-        g_ClientSteamID[client][0] = '\0'; // clear the Steam ID for the disconnected client
+        g_ClientSteamID[client][0] = '\0'; // clear the Steam ID for the disconnected client.. TODO: fix me
     }
 }
 
