@@ -1,7 +1,7 @@
 ## source !skybox
 - completely rebuilt from a csgo plugin by Deathknife (https://github.com/Deathknife/skybox) to work on the old engine
 - uses SQLite to store and load player skyboxes across maps.
-- requires connect extension (https://forums.alliedmods.net/showthread.php?t=162489), included in repo.
+- requires connect extension (https://forums.alliedmods.net/showthread.php?t=162489), windows included in repo.
 - still incomplete and only tested on LAN, may be buggy. see todo.
 - does not use IP.
 
