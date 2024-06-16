@@ -102,48 +102,20 @@ public void OnTableCreated(Database db, DBResultSet results, const char[] error,
 
 public void OnMapStart()
 {
-    // delete any existing menu to avoid memory leaks
-    if (g_hMenu != null)
-    {
-        delete g_hMenu;
-    }
-
     // create the menu
     g_hMenu = new Menu(Handler_SkyboxMenu);
     g_hMenu.SetTitle("Choose a skybox!");
 
-    // load skyboxes into the menu
-    LoadSkybox();
-
-    // reapply skybox settings for all valid clients
-    for (int client = 1; client <= MaxClients; client++)
-    {
-        if (IsValidClient(client) && g_bClientSkyboxApplied[client])
-        {
-            LoadClientSkyboxBySteamID(g_ClientSteamID[client]);
-        }
-    }
+    LoadSkybox(); // Load file
 }
 
 public void OnMapEnd()
 {
     // delete menu handle to free resources
-    if (g_hMenu != null)
-    {
-        delete g_hMenu;
-        g_hMenu = null;
-    }
+    delete g_hMenu;
 
-    // clear skybox application state for all clients
-    for (int client = 1; client <= MaxClients; client++)
-    {
-        if (IsValidClient(client))
-        {
-            g_bClientSkyboxApplied[client] = false;
-        }
-    }
+    //TODO: handle map changes
 }
-
 
 public bool OnClientConnect(int client)
 {
@@ -166,25 +138,10 @@ public void OnClientDisconnect(int client)
 {
     if (IsValidClient(client))
     {
-        // reset skybox applied state
         g_bClientSkyboxApplied[client] = false;
-
-        // clear the Steam ID for the disconnected client
-        g_ClientSteamID[client][0] = '\0';
-
-        // optionally, remove from pending queries if present
-        for (int i = 0; i < MAX_PENDING_QUERIES; i++)
-        {
-            if (StrEqual(g_PendingSteamIDs[i], g_ClientSteamID[client]))
-            {
-                g_PendingSteamIDs[i][0] = '\0'; // clear the pending Steam ID
-                g_PendingQueryCount--;
-                break;
-            }
-        }
+        g_ClientSteamID[client][0] = '\0'; // clear the Steam ID for the disconnected client.. TODO: fix me
     }
 }
-
 
 /*
 public bool IsValidClient(int client)
