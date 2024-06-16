@@ -37,7 +37,7 @@ public bool OnClientPreConnectEx(const char[] name, char password[255], const ch
     int clientIndex = -1;
     for (int i = 0; i < MAXPLAYERS + 1; i++)
     {
-        if (g_ClientSteamID[i][0] == '\0')
+        if (g_ClientSteamID[i][0] == '\0') // should be IsValidClient for now
         {
             clientIndex = i;
             break;
