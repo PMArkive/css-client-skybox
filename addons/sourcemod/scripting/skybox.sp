@@ -262,6 +262,8 @@ public void SetSkybox(int client, const char[] skybox)
     // send sv_skyname to client
     SendConVarValue(client, g_cvarSkyName, skybox);
     PrintToServer("[SKYBOX] Set skybox for client %d: %s", client, skybox);
+    // ReconnectClient(client)
+    // ClientCommand(client, "retry; r_flushlod")
 
     // save to SQLite.. TODO: do this somewhere else
     if (g_hDatabase != null) // Ensure database handle is valid
